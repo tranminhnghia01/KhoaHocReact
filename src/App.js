@@ -5,53 +5,13 @@ import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 import MyComponent from "./components/MyComponent";
 
 import React from "react";
+import UserInfo from "./components/UserInfo";
 
 class App extends React.Component {
-  state = {
-    name: "Nghia",
-    address: "Minh Nghia 11a1",
-    age: 25,
-  };
-
-  handleClick(event) {
-    console.log("My name is", this.state.name);
-    this.setState({ name: "Eric", age: Math.floor(Math.random() * 100) });
-  }
-
-  handleOnChangeInput = (e) => {
-    this.setState({ name: e.target.value });
-    console.log(e.target.value);
-  };
-
-  handleOnSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-  };
-
   render() {
     return (
       <>
-        My name is {this.state.name}, age {this.state.age}
-        <button
-          onClick={(event) => {
-            this.handleClick(event);
-          }}
-        >
-          Click me!
-        </button>
-        <form
-          onSubmit={(e) => {
-            this.handleOnSubmit(e);
-          }}
-        >
-          <input
-            type="text"
-            onChange={(e) => {
-              this.handleOnChangeInput(e);
-            }}
-          />
-          <button>Submit</button>
-        </form>
+        <MyComponent />
       </>
     );
   }
