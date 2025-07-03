@@ -17,6 +17,17 @@ class App extends React.Component {
     console.log("My name is", this.state.name);
     this.setState({ name: "Eric", age: Math.floor(Math.random() * 100) });
   }
+
+  handleOnChangeInput = (e) => {
+    this.setState({ name: e.target.value });
+    console.log(e.target.value);
+  };
+
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
     return (
       <>
@@ -28,6 +39,19 @@ class App extends React.Component {
         >
           Click me!
         </button>
+        <form
+          onSubmit={(e) => {
+            this.handleOnSubmit(e);
+          }}
+        >
+          <input
+            type="text"
+            onChange={(e) => {
+              this.handleOnChangeInput(e);
+            }}
+          />
+          <button>Submit</button>
+        </form>
       </>
     );
   }
