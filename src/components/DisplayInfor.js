@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DisplayInfor.scss";
 import logo from "../logo.svg";
 // class DisplayInfor extends React.Component {
@@ -32,10 +32,19 @@ import logo from "../logo.svg";
 
 const DisplayInfor = (props) => {
   const { listUsers } = props;
+  const [isShowHide, setIsShowHide] = useState(true);
+
+  const handleShowHideListUser = () => {
+    setIsShowHide(!isShowHide);
+  };
   return (
     <div className="display-infor-container">
-      {/* <img src={logo} /> */}
-      {true &&
+      <div>
+        <span onClick={() => handleShowHideListUser()}>
+          {isShowHide ? "Hide" : "Show"} list Users :
+        </span>
+      </div>
+      {isShowHide &&
         listUsers.map((item) => {
           return (
             <div key={item.id} className={+item.age >= 18 ? "green" : "red"}>
