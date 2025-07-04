@@ -55,11 +55,6 @@ import React, { useState } from "react";
 // }
 
 const AddUserInfo = (props) => {
-  // state = {
-  //   name: "",
-  //   age: "",
-  //   id: "",
-  // };
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
 
