@@ -7,3 +7,85 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
 }
+
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-xl,
+  .container-md,
+  .container-sm {
+    max-width: 1350px !important;
+  }
+}
+.app-container {
+  .header-container {
+    .btn-login {
+      border-radius: 5px;
+      margin-right: 10px;
+      padding: 0 15px;
+      border: 1px solid #ccc;
+      height: 40px;
+      &:hover {
+        color: rgb(230, 53, 221);
+      }
+    }
+    .btn-signup {
+      border-radius: 5px;
+      padding: 0 15px;
+      color: white;
+      height: 40px;
+      background-color: #303030;
+      &:hover {
+        background-color: black;
+      }
+    }
+    .navbar {
+      padding-top: 20px;
+      z-index: 10;
+      opacity: 0.8;
+      background-color: rgba(0, 0, 0, 0) !important;
+      .nav-link {
+        &.active {
+          color: #00bfff;
+        }
+      }
+    }
+  }
+  .homepage-container {
+    .homepage-content {
+      width: 50%;
+      padding: 100px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      .title-1 {
+        font-size: 45px;
+        font-weight: 600;
+      }
+      .title-2 {
+        font-size: 25px;
+      }
+
+      .title-3 {
+        font-size: 25px;
+        button {
+          border-radius: 5px;
+          padding: 0 15px;
+          color: white;
+          height: 50px;
+          background-color: #303030;
+          &:hover {
+            background-color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
