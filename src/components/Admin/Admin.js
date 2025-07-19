@@ -4,6 +4,8 @@ import { useState } from "react";
 import SideBar from "./SiderBar";
 import { Outlet } from "react-router-dom";
 
+import { Bounce, ToastContainer, toast } from "react-toastify";
+
 const Admin = (props) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
@@ -24,6 +26,17 @@ const Admin = (props) => {
           <Outlet />
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
