@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { postCreateNewUser } from "../../../services/apiServices";
+import _ from "lodash";
 
-const ModalCreateUser = (props) => {
-  const { show, setShow } = props;
+const ModalUpdateUser = (props) => {
+  const { show, setShow, dataUpdate } = props;
 
   const handleClose = () => {
     setShow(false);
@@ -24,6 +25,20 @@ const ModalCreateUser = (props) => {
   const [image, setImange] = useState("");
   const [role, setRole] = useState("USER");
   const [previewImage, setPreviewImage] = useState("");
+
+  useEffect(() => {
+    console.log("run effect", dataUpdate);
+
+    if (!_.isEmpty(dataUpdate)) {
+      setEmail(dataUpdate.email);
+      setUsername(dataUpdate.username);
+      setRole(dataUpdate.role);
+      setImange("");
+      if (dataUpdate.image) {
+        setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`);
+      }
+    }
+  }, [dataUpdate]);
 
   const handleUploadImage = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
@@ -74,7 +89,7 @@ const ModalCreateUser = (props) => {
         className="modal-add-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new user</Modal.Title>
+          <Modal.Title>Update user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
@@ -85,6 +100,7 @@ const ModalCreateUser = (props) => {
                 className="form-control"
                 id="inputEmail4"
                 value={email}
+                disabled
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -94,6 +110,7 @@ const ModalCreateUser = (props) => {
                 type="password"
                 className="form-control"
                 id="inputPassword4"
+                disabled
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
@@ -154,4 +171,4 @@ const ModalCreateUser = (props) => {
   );
 };
 
-export default ModalCreateUser;
+export default ModalUpdateUser;
